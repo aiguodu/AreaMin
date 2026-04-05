@@ -67,7 +67,7 @@ export const GeometrySVG: React.FC<GeometrySVGProps> = ({ step }) => {
         fill="rgba(59, 130, 246, 0.08)"
         stroke="transparent"
         initial={{ opacity: 0 }}
-        animate={{ opacity: step >= 0 ? 1 : 0 }}
+        animate={{ opacity: step >= 1 ? 1 : 0 }}
         transition={{ duration: 0.5 }}
       />
 
@@ -81,8 +81,8 @@ export const GeometrySVG: React.FC<GeometrySVGProps> = ({ step }) => {
       <RightAngle p={A} p1={B} p2={D} />
       <RightAngle p={C} p1={B} p2={D} />
 
-      {/* 步骤 1: 辅助线 AF */}
-      {step >= 1 && (
+      {/* 步骤 3: 辅助线 AF (原步骤 2) */}
+      {step >= 2 && (
         <motion.g>
           <motion.line 
             x1={A.x} y1={A.y} x2={F.x} y2={F.y} 
@@ -99,8 +99,8 @@ export const GeometrySVG: React.FC<GeometrySVGProps> = ({ step }) => {
         </motion.g>
       )}
 
-      {/* 步骤 2: 辅助线 BG */}
-      {step >= 2 && (
+      {/* 步骤 4: 辅助线 BG (原步骤 3) */}
+      {step >= 3 && (
         <motion.g>
           <motion.line 
             x1={B.x} y1={B.y} x2={G.x} y2={G.y} 
@@ -116,8 +116,8 @@ export const GeometrySVG: React.FC<GeometrySVGProps> = ({ step }) => {
         </motion.g>
       )}
 
-      {/* 步骤 3: 相似三角形高亮 & 变量 */}
-      {step >= 3 && (
+      {/* 步骤 5: 相似三角形高亮 (原步骤 4) */}
+      {step >= 4 && (
         <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <polygon points={`${A.x},${A.y} ${B.x},${B.y} ${G.x},${G.y}`} fill="rgba(16, 185, 129, 0.2)" />
           <polygon points={`${A.x},${A.y} ${F.x},${F.y} ${D.x},${D.y}`} fill="rgba(239, 68, 68, 0.2)" />
@@ -128,8 +128,8 @@ export const GeometrySVG: React.FC<GeometrySVGProps> = ({ step }) => {
         </motion.g>
       )}
 
-      {/* 步骤 4: 梯形高亮 & 边长 */}
-      {step >= 4 && (
+      {/* 步骤 6: 梯形高亮 & 边长 (原步骤 5) */}
+      {step >= 5 && (
         <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <polygon points={`${B.x},${B.y} ${G.x},${G.y} ${F.x},${F.y} ${E.x},${E.y}`} fill="rgba(245, 158, 11, 0.2)" />
           <text x={G.x + 5} y={(G.y + F.y) / 2} className="text-sm fill-amber-600 font-bold">8-x</text>
@@ -145,7 +145,7 @@ export const GeometrySVG: React.FC<GeometrySVGProps> = ({ step }) => {
       <text x={E.x - 10} y={E.y - 10} className="text-lg fill-slate-800 font-serif italic">E</text>
 
       {/* 已知条件标注 */}
-      {step === 0 && (
+      {(step === 1 || step === 0) && (
         <motion.text x={(D.x + E.x) / 2 - 5} y={D.y + 15} className="text-sm fill-blue-600 font-bold" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           6
         </motion.text>
