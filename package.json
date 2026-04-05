@@ -1,5 +1,5 @@
 {
-  "name": "react-example",
+  "name": "maths-max-diff",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,10 +7,10 @@
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
-    "serve:web": "vite preview --port 5002 --host",
+    "serve:web": "vite preview --port 5003 --host",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
-    "pm2": "pm2 start 'npm run serve:web' --name maths-area-min"
+    "pm2": "pm2 start 'npm run serve:web' --name maths-max-diff"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

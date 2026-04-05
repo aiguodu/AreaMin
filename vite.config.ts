@@ -29,6 +29,12 @@ export default defineConfig(({mode}) => {
     },
     preview: {
       allowedHosts: ['simawt.cn'],
+      proxy: {
+        '/api/tts': {
+          target: `http://localhost:${env.VITE_TTS_PROXY_PORT || 5000}`,
+          changeOrigin: true,
+        },
+      },
     },
   };
 });

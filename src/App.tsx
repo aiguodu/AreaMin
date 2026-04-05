@@ -114,7 +114,7 @@ export default function App() {
               几何动点
             </span>
             <h1 className="text-xl font-bold text-slate-800">
-              四边形面积最值问题：求面积与线段长
+              线段差最值问题：化折为直
             </h1>
           </div>
           <div className="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
